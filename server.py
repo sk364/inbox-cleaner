@@ -10,7 +10,7 @@ server_uri = 'http://localhost:5000'
 app = Flask(__name__)
 flow = flow_from_clientsecrets(
     GOOGLE_CLIENT_SECRETS_JSON,
-    scope='https://mail.google.com',
+    scope='https://www.googleapis.com/auth/gmail.modify',
     redirect_uri=server_uri + '/post_registration'
 )
 
