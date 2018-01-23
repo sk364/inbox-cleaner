@@ -8,11 +8,10 @@ from datetime import datetime
 from apiclient import discovery, errors
 from oauth2client.client import Credentials
 
-from config import REGISTERED_CREDENTIALS_JSON, GMAIL_FILTER_QUERY
+from config import (GMAIL_FILTER_QUERY, NEW_LABEL_NAME, REGISTERED_CREDENTIALS_JSON,
+                    SCHEDULED_TIME)
 
 
-scheduled_time = (11, 37, 0)
-new_label_name = 'lostnfound'
 labels = {
     'removeLabelIds': ['INBOX'],
     'addLabelIds': []
@@ -77,15 +76,15 @@ def move_threads(thread_ids):
 
 while True:
     now = datetime.now()
-    if now.hour == scheduled_time[0] and now.minute == scheduled_time[1] and \
-       now.second == scheduled_time[2]:
+    if now.hour == SCHEDULED_TIME[0] and now.minute == SCHEDULED_TIME[1] and \
+       now.second == SCHEDULED_TIME[2]:
         all_credentials = get_credentials()
         for credentials in all_credentials:
             http = credentials.authorize(httplib2.Http())
             service = discovery.build('gmail', 'v1', http=http)
 
             print 'User loaded...'
-            label_id = create_label(new_label_name)
+            label_id = create_label(NEW_LABEL_NAME)
             labels['addLabelIds'].append(label_id)
             print 'Label created...'
             thread_ids = get_threads()
