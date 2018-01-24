@@ -1,0 +1,44 @@
+body {
+  background-color: #4fb599;
+  font-family: cursive;
+}
+.vert-offset {
+  margin-top: 1em;
+}
+.register-btn {
+  margin-top: 4em;
+}
+.background-image {
+  position: absolute;
+  left: 35%;
+  top: 19%;
+  height: 60%;
+}
+.help-text {
+  position: absolute;
+  top: 19%;
+  left: 47%;
+  display: none;
+  font-size: 15px;
+}
+.curly-arrow {
+  position: absolute;
+  top: 23%;
+  left: 59%;
+  width: 13%;
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .background-image {
+    left: 1%;
+    height: 52%;
+  }
+  .help-text, .curly-arrow {
+    display: block;
+  }
+}
+@media screen and (max-width: 320px) {
+  .help-text {
+    font-size: 14px;
+  }
+}
